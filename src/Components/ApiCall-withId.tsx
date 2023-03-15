@@ -10,7 +10,7 @@ export const ApiCallWithId = () => {
     const [singlePost, setSinglePost] = useState(null);
     const [id, setId] = useState<string>('');
 
-    const {title, body} = useSelector((state: any) => state.apiCall.initialValues)
+    const { title, body } = useSelector((state: any) => state.apiCall.initialValues)
     const dispatch = useDispatch();
 
     const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
