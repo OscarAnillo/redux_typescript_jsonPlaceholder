@@ -1,26 +1,36 @@
 import { useState, useEffect } from 'react'
-import { IApiCallWithId } from './Interfaces';
 
 import axios from 'axios'
 
+
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+import { addSinglePost } from '../Redux/features/apiCall-slice';
+
 export const ApiCallWithId = () => {
-    const apiCall: IApiCallWithId = {userId: 0, id: "", title: "", body: ""}
-    const [singlePost, setSinglePost] = useState(apiCall);
+    const [singlePost, setSinglePost] = useState(null);
     const [id, setId] = useState<string>('');
 
+    const {title, body} = useSelector((state: any) => state.apiCall.initialValues)
+    const dispatch = useDispatch();
 
     const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
         setId(e.currentTarget.value)
+        
     }
 
     useEffect(() => {
         axios
         .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
         .then((res) => {
-            setSinglePost(res.data)
+            setSinglePost(res.data);
+            dispatch(addSinglePost({
+                id: res.data.id,
+                title: res.data.title,
+                body: res.data.body
+            }))
         })
         .catch(console.log)
-    }, [id])
+    }, [id, dispatch])
     
     return (
         <div className="div-api-id">
@@ -28,8 +38,9 @@ export const ApiCallWithId = () => {
             
             {id && 
             <div>
-                <h1>{singlePost.title}</h1>
-                <p>{singlePost.body}</p>
+                <p>Post #{id}</p>
+                <h1>{title}</h1>
+                <p>{body}</p>
             </div>
             }
         </div>
