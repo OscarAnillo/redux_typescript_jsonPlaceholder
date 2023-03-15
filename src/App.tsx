@@ -1,4 +1,6 @@
-import React from 'react';
+//import { SimpleApiCallComponent } from './Components/ApiCall-component';
+import { ApiCallWithId } from './Components/ApiCall-withId';
+
 import './App.css';
 
 function App() {
@@ -6,6 +8,8 @@ function App() {
     <div className="App">
       <h1>Oscar Anillo</h1>
       <p>Web UI Developer</p>
+      {/* <SimpleApiCallComponent /> */}
+      <ApiCallWithId />
     </div>
   );
 }

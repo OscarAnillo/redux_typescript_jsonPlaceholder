@@ -7,3 +7,32 @@
   text-align: center;
 }
 
+.div-input {
+  margin: 1em 0;
+}
+.map-div {
+  margin: 1.5em auto;
+  text-align: left;
+  width: 70%;
+}
+.map-div h1::first-letter {
+  text-transform: uppercase;
+}
+.div-api-id {
+  margin-top: 2em;
+}
+.div-api-id div {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin: 1em auto;
+  padding: 1em;
+  text-align: left;
+  width: 70%;
+}
+.div-api-id div h1::first-letter {
+  margin: .5em 0;
+  text-transform: uppercase;
+}
+.div-api-id p {
+  line-height: 28px;
+}
